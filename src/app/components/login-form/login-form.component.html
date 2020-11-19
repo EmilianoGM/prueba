@@ -1,0 +1,28 @@
+<h4>Ingrese a su cuenta</h4>
+<form [formGroup]="formLogin" (ngSubmit)="onSubmit(formLogin.value)">
+  <div>
+    <label for="email">
+      Correo
+    </label>
+    <input id="email" type="text" formControlName="email">
+  </div>
+  <div *ngFor="let validacion of mensajesValidacion.email">
+    <div class="mensajeError"
+    *ngIf="formLogin.get('email').hasError(validacion.tipo) && (formLogin.get('email').dirty || formLogin.get('email').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+  <div>
+    <label for="password">
+      Contraseña
+    </label>
+    <input  id="password" type="password" formControlName="password">
+  </div>
+  <div *ngFor="let validacion of mensajesValidacion.password">
+    <div class="mensajeError"
+    *ngIf="formLogin.get('password').hasError(validacion.tipo) && (formLogin.get('password').dirty || formLogin.get('password').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+  <button class="button" type="submit" [disabled]="!formLogin.valid">Acceder</button>
+</form>

@@ -1,0 +1,12 @@
+<ul *ngIf="!hayUsuarioLoggeado" class="borde">
+  <li>
+    <a class="links" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+  </li>
+</ul>
+<div *ngIf="hayUsuarioLoggeado" class="borde">
+    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Alta de mascota</a>
+    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Lista de mascotas</a>
+    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Lista de turnos</a>
+    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Pedir turno</a>
+    <button class="links" (click)="salir()">Cerrar sesión</button>
+</div>

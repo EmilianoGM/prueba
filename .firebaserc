@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "pruebasegparcial": {
+      "hosting": {
+        "PruebaSegParcial": [
+          "pruebasegparcial"
+        ]
+      }
+    }
+  }
+}
