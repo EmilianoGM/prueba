@@ -10,13 +10,29 @@ import { IUsuario, IUsuarioUID } from '../clases/usuario';
 export class AuthService {
 
   estadoAutenticacion;
+  token;
 
   constructor(
     private angularFireAuth: AngularFireAuth,
     private dataBase: AngularFirestore
   ) {
+    this.token = localStorage.getItem('token');
+    this.estadoAutenticacion = false;
     this.angularFireAuth.authState.subscribe( (authState) => {
-      console.log("Estado autenticacion", authState);
+      console.log("Estado autenticacion: ", authState);
+      let json =
+        {
+          bandera: false,
+        }
+
+      if(authState){
+        json =
+          {
+            bandera: true,
+          }
+
+      }
+      localStorage.setItem("token", JSON.stringify(json));
       //this.estadoAutenticacion = authState;
     });
   }
@@ -48,6 +64,28 @@ export class AuthService {
               tipo: value.tipo
             };
             this.dataBase.collection('usuarios').doc(res.user.uid).set(usuario);
+            if(usuario.tipo == 'profesor'){
+              this.dataBase.collection('profesores').doc(res.user.uid).set(usuario);
+            }
+            if(usuario.tipo == 'alumno'){
+              this.dataBase.collection('alumnos').doc(res.user.uid).set(usuario);
+            }
+            resolve(res);
+          },
+          err => reject(err))
+    });
+  }
+
+  public registrarAdmin(value){
+    return new Promise<any>((resolve, reject) => {
+      this.angularFireAuth.createUserWithEmailAndPassword(value.email, value.password)
+        .then(
+          res => {
+            let usuario: IUsuario = {
+              correo: value.email,
+              tipo: 'admin'
+            };
+            this.dataBase.collection('usuarios').doc(res.user.uid).set(usuario);
             resolve(res);
           },
           err => reject(err))
@@ -76,4 +114,16 @@ export class AuthService {
     return this.angularFireAuth.authState;
   }
 
+
+  public isLogged(){
+    return this.token != null;
+  }
+
+   public getToken(){
+    if (this.isLogged()){
+      return JSON.parse(this.token);
+    } else{
+      return null;
+    }
+  }
 }

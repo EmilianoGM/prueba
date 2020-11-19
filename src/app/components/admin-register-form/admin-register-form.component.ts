@@ -2,11 +2,12 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-register-form',
-  templateUrl: './register-form.component.html',
-  styleUrls: ['./register-form.component.scss']
+  selector: 'app-admin-register-form',
+  templateUrl: './admin-register-form.component.html',
+  styleUrls: ['./admin-register-form.component.scss']
 })
-export class RegisterFormComponent implements OnInit {
+export class AdminRegisterFormComponent implements OnInit {
+
   @Output() emitData = new EventEmitter<any>();
   formRegister: FormGroup
   mensajesValidacion = {
@@ -33,10 +34,6 @@ export class RegisterFormComponent implements OnInit {
         '',
         [Validators.required,
         Validators.minLength(6)]
-      ],
-      tipo: [
-        'alumno',
-        [Validators.required]
       ]
     });
   }
@@ -47,4 +44,5 @@ export class RegisterFormComponent implements OnInit {
   public onSubmit(loginData){
     this.emitData.emit(loginData);
   }
+
 }

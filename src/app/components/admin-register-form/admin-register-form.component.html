@@ -27,10 +27,5 @@
     </div>
   </div>
 
-  <label for="tipo">Seleciona un tipo de usuario:</label>
-  <select id="tipo" name="tipo" formControlName="tipo">
-    <option value="alumno">Alumno</option>
-    <option value="profesor">Profesor</option>
-  </select>
   <button class="button" type="submit" [disabled]="!formRegister.valid">Registrarme</button>
 </form>

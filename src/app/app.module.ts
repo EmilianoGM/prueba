@@ -14,8 +14,13 @@ import { RegisterFormComponent } from './components/register-form/register-form.
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { EmailComponent } from './components/email/email.component';
-import { MascotaFormComponent } from './components/mascota-form/mascota-form.component';
-import { ChatComponent } from './components/chat/chat.component';
+import { AdminRegisterFormComponent } from './components/admin-register-form/admin-register-form.component';
+import { AdminRegisterComponent } from './pages/admin-register/admin-register.component';
+import { MateriaRegisterFormComponent } from './components/materia-register-form/materia-register-form.component';
+import { MateriaRegisterComponent } from './pages/materia-register/materia-register.component';
+import { ListaProfesoresComponent } from './components/lista-profesores/lista-profesores.component';
+import { ListaMateriasComponent } from './components/lista-materias/lista-materias.component';
+import { MostrarMateriasComponent } from './pages/mostrar-materias/mostrar-materias.component';
 
 
 @NgModule({
@@ -28,8 +33,13 @@ import { ChatComponent } from './components/chat/chat.component';
     LoginFormComponent,
     MenuComponent,
     EmailComponent,
-    MascotaFormComponent,
-    ChatComponent
+    AdminRegisterFormComponent,
+    AdminRegisterComponent,
+    MateriaRegisterFormComponent,
+    MateriaRegisterComponent,
+    ListaProfesoresComponent,
+    ListaMateriasComponent,
+    MostrarMateriasComponent
   ],
   imports: [
     BrowserModule,

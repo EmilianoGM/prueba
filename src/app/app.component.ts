@@ -22,7 +22,7 @@ export class AppComponent {
       } else {
         this.hayUsuario = false;
       }
-    })
+    });
   }
 
   public logOut(){

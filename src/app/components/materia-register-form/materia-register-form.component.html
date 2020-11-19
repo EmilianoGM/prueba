@@ -1,0 +1,66 @@
+<h4>Registro de Materia</h4>
+<form [formGroup]="formMateriaRegister" (ngSubmit)="onSubmit(formMateriaRegister.value)">
+  <div>
+    <label for="nombre">
+      Nombre
+    </label>
+    <input id="nombre" type="text" formControlName="nombre">
+  </div>
+
+  <div *ngFor="let validacion of mensajesValidacion.nombre">
+    <div class="mensajeError"
+    *ngIf="formMateriaRegister.get('nombre').hasError(validacion.tipo) && (formMateriaRegister.get('nombre').dirty || formMateriaRegister.get('nombre').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+
+  <div>
+    <label for="cuatrimestre">
+      Cuatrimestre
+    </label>
+    <input id="cuatrimestre" type="text" formControlName="cuatrimestre">
+  </div>
+
+  <div *ngFor="let validacion of mensajesValidacion.cuatrimestre">
+    <div class="mensajeError"
+    *ngIf="formMateriaRegister.get('cuatrimestre').hasError(validacion.tipo) && (formMateriaRegister.get('cuatrimestre').dirty || formMateriaRegister.get('cuatrimestre').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+
+  <div>
+    <label for="cupo">
+      Cupo de alumnos
+    </label>
+    <input id="cupo" type="number" min="1" max="100" formControlName="cupo">
+  </div>
+
+  <div *ngFor="let validacion of mensajesValidacion.cupo">
+    <div class="mensajeError"
+    *ngIf="formMateriaRegister.get('cupo').hasError(validacion.tipo) && (formMateriaRegister.get('cupo').dirty || formMateriaRegister.get('cupo').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+
+  <div>
+    <label for="year">
+      Año
+    </label>
+    <input id="year" type="number" formControlName="year"
+    min="1990" max="2020">
+  </div>
+
+  <div *ngFor="let validacion of mensajesValidacion.year">
+    <div class="mensajeError"
+    *ngIf="formMateriaRegister.get('year').hasError(validacion.tipo) && (formMateriaRegister.get('year').dirty || formMateriaRegister.get('year').touched)">
+      {{validacion.mensaje}}
+    </div>
+  </div>
+
+  <div>
+    <p>{{mensajeProfesor}}</p>
+    <app-lista-profesores (emitData)="agregarProfesor($event)"></app-lista-profesores>
+  </div>
+
+  <button class="button" type="submit" [disabled]="!formMateriaRegister.valid">Registrar materia</button>
+</form>

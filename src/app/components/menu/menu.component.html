@@ -1,12 +1,13 @@
 <ul *ngIf="!hayUsuarioLoggeado" class="borde">
   <li>
     <a class="links" [routerLink]="['/login']" routerLinkActive="router-link-active">Login</a>
+    <a class="links" [routerLink]="['/register']" routerLinkActive="router-link-active">Registrar usuario</a>
+    <a class="links" [routerLink]="['/admin-register']" routerLinkActive="router-link-active">Registrar administrador</a>
   </li>
 </ul>
 <div *ngIf="hayUsuarioLoggeado" class="borde">
-    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Alta de mascota</a>
-    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Lista de mascotas</a>
-    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Lista de turnos</a>
-    <a class="links" [routerLink]="['/home']" routerLinkActive="router-link-active">Pedir turno</a>
+    <a class="links" [routerLink]="['/materia-register']" routerLinkActive="router-link-active">Alta de materia</a>
+    <a class="links" [routerLink]="['/mostrar-materias']" routerLinkActive="router-link-active">Lista de materia</a>
+    <app-email></app-email>
     <button class="links" (click)="salir()">Cerrar sesión</button>
 </div>

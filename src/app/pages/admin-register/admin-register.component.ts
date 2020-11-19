@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { RegisterFormComponent } from '../../components/register-form/register-form.component';
+import { AdminRegisterFormComponent } from '../../components/admin-register-form/admin-register-form.component';
 import { AuthService } from '../../services/auth.service';
 import { Router} from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-admin-register',
+  templateUrl: './admin-register.component.html',
+  styleUrls: ['./admin-register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class AdminRegisterComponent implements OnInit {
 
   constructor(
     private fireAuthService: AuthService,
@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
 
   public registrarUsuario(value){
     //console.log("Formulario registro:", value);
-    this.fireAuthService.registrarUsuario(value)
+    this.fireAuthService.registrarAdmin(value)
       .then((res) => {
         this.router.navigateByUrl("/login");
       }, (err) => {

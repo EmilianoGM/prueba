@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   public loggearUsuario(value){
     this.fireAuthService.loginUsuario(value)
       .then((res) => {
-        this.router.navigateByUrl("/home");
+        this.router.navigateByUrl("/materia-register");
       }, (err) => {
         this.errorLogin = true;
         console.log("Error al loggear", err);
