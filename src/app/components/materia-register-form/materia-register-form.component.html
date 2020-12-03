@@ -56,11 +56,5 @@
       {{validacion.mensaje}}
     </div>
   </div>
-
-  <div>
-    <p>{{mensajeProfesor}}</p>
-    <app-lista-profesores (emitData)="agregarProfesor($event)"></app-lista-profesores>
-  </div>
-
-  <button class="button" type="submit" [disabled]="!formMateriaRegister.valid">Registrar materia</button>
+  <button class="button" type="submit" [disabled]="!formMateriaRegister.valid || hayProfesor != true">Registrar materia</button>
 </form>

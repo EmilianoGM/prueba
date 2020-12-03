@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { EmailComponent} from '../email/email.component';
 
 @Component({
   selector: 'app-menu',

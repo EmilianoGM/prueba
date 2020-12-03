@@ -5,6 +5,8 @@
     <td>Cupo</td>
     <td>Año</td>
     <td>Profesor</td>
+    <td *ngIf="activarInscripcion == true">INSCRIPCION</td>
+    <td *ngIf="activarAlumno == true">ACCION</td>
   </tr>
   <tbody *ngFor="let materia of lista">
     <tr>
@@ -13,6 +15,18 @@
       <td>{{materia.cupo}}</td>
       <td>{{materia.year}}</td>
       <td>{{materia.profesor}}</td>
+      <td *ngIf="activarInscripcion == true && materia.cupo > 0">
+        <button (click)="enviarMateria(materia)">Inscribir alumnos</button>
+      </td>
+      <td *ngIf="(activarInscripcion == true || activarInscripcionAlumno == true) && materia.cupo == 0">
+        Cupo lleno
+      </td>
+      <td *ngIf="activarAlumno == true">
+        <button (click)="enviarMateria(materia)">Lista de alumnos</button>
+      </td>
+      <td *ngIf="activarInscripcionAlumno == true && materia.cupo > 0">
+        <button (click)="enviarMateria(materia)">Inscribirse</button>
+      </td>
     </tr>
   </tbody>
 </table>

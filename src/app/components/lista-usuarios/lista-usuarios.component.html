@@ -1,0 +1,22 @@
+<h6>Selecciona el tipo de usuario para ver la lista</h6>
+<table>
+  <tr>
+    <td>Email</td>
+    <td>Tipo</td>
+    <td>
+      Tipo de usuario:
+      <select [(ngModel)]="valorTipo" value='todos'>
+        <option value="todos" >Todos</option>
+        <option value="alumno">Alumno</option>
+        <option value="profesor">Profesor</option>
+        <option value="admin">Admin</option>
+      </select>
+    </td>
+  </tr>
+  <tbody *ngFor="let usuario of lista | tipo: valorTipo">
+    <tr>
+      <td>{{usuario.correo}}</td>
+      <td>{{usuario.tipo}}</td>
+    </tr>
+  </tbody>
+</table>

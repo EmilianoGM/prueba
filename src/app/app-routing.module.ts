@@ -7,7 +7,11 @@ import { AdminRegisterComponent } from './pages/admin-register/admin-register.co
 import { MateriaRegisterComponent } from './pages/materia-register/materia-register.component';
 import { MostrarMateriasComponent } from './pages/mostrar-materias/mostrar-materias.component';
 
+import { AdminGuard } from './guards/admin.guard';
 import{ AuthGuard } from './guards/auth.guard';
+import { InscripcionMateriaComponent } from './pages/inscripcion-materia/inscripcion-materia.component';
+import { MostrarUsuariosComponent } from './pages/mostrar-usuarios/mostrar-usuarios.component';
+import { from } from 'rxjs';
 const routes: Routes = [
   {
     path: '',
@@ -28,15 +32,26 @@ const routes: Routes = [
   {
     path: 'materia-register',
     component: MateriaRegisterComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, AdminGuard]
   },
   {
     path: 'mostrar-materias',
     component: MostrarMateriasComponent,
   },
   {
+    path: 'mostrar-usuarios',
+    component: MostrarUsuariosComponent,
+    canActivate: [AuthGuard, AdminGuard]
+  },
+  {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'inscripcion-materia',
+    component: InscripcionMateriaComponent,
+    canActivate: [AuthGuard, AdminGuard]
   }
 ];
 

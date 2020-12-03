@@ -1,7 +1,9 @@
 export interface IMateria {
+  id?,
   nombre,
   cuatrimestre,
-  cupo,
+  cupo: number,
   year,
-  profesor
+  profesor,
+  alumnos
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { MenuComponent } from './components/menu/menu.component';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -32,4 +33,5 @@ export class AppComponent {
       });
     }
   }
+
 }

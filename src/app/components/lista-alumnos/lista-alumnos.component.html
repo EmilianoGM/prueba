@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <td>Email</td>
+    <td *ngIf="activarAcciones == true">Accion</td>
+  </tr>
+  <tr>
+    <td *ngIf="lista.length == 0">No hay alumnos disponibles</td>
+  </tr>
+  <tbody *ngFor="let alumno of lista">
+    <tr>
+      <td>{{alumno.correo}}</td>
+      <td *ngIf="activarAcciones == true"><button (click)="enviarAlumno(alumno)">Agregar</button></td>
+
+    </tr>
+  </tbody>
+</table>

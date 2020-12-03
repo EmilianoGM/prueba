@@ -6,7 +6,7 @@ import { CloudStorageService } from '../../services/cloud-storage.service';
   styleUrls: ['./lista-profesores.component.scss']
 })
 export class ListaProfesoresComponent implements OnInit {
-  @Output() emitData = new EventEmitter<any>();
+  @Output() emitProfesor = new EventEmitter<any>();
 
   lista = [];
 
@@ -24,7 +24,12 @@ export class ListaProfesoresComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public onSubmit(data){
-    this.emitData.emit(data);
+  public enviarProfesor(correo: string){
+    let nuevaData = {
+      email: correo,
+      bandera: true
+    }
+    console.log("NUEVA DATA", nuevaData);
+    this.emitProfesor.emit(nuevaData);
   }
 }

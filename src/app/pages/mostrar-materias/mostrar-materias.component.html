@@ -1,1 +1,3 @@
-<app-lista-materias></app-lista-materias>
+<app-lista-materias [activarAlumno]="true" (emitMateria)="mostrarAlumnos($event)"></app-lista-materias>
+<h6 *ngIf="hayMateria">Lista de alumnos inscriptos en {{materia.nombre}}</h6>
+<app-lista-alumnos *ngIf="hayMateria" [lista]="listaAlumnos"></app-lista-alumnos>

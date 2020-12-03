@@ -1,1 +1,3 @@
-<app-materia-register-form (emitData)="registrarMateria($event)" ></app-materia-register-form>
+<app-materia-register-form (emitData)="registrarMateria($event)" [hayProfesor]="profesorAgregado"></app-materia-register-form>
+<h6>{{mensaje}}</h6>
+<app-lista-profesores (emitProfesor)="agregarProfesor($event)"></app-lista-profesores>

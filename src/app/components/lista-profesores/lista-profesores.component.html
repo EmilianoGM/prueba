@@ -7,7 +7,7 @@
   <tbody *ngFor="let profesor of lista">
     <tr>
       <td>{{profesor.correo}}</td>
-      <td><button (click)="onSubmit(profesor.correo)">Agregar</button></td>
+      <td><button (click)="enviarProfesor(profesor.correo)">Agregar</button></td>
     </tr>
   </tbody>
 </table>

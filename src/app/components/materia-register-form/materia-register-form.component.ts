@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IMateria } from '../../clases/materia';
 import { ListaProfesoresComponent } from '../lista-profesores/lista-profesores.component';
@@ -8,11 +8,9 @@ import { ListaProfesoresComponent } from '../lista-profesores/lista-profesores.c
   styleUrls: ['./materia-register-form.component.scss']
 })
 export class MateriaRegisterFormComponent implements OnInit {
+  @Input() hayProfesor: boolean;
   @Output() emitData = new EventEmitter<any>();
   formMateriaRegister: FormGroup;
-  hayProfesor: boolean = false;
-  mensajeProfesor = "¡Atención! Tenes que seleccionar un profesor de la lista";
-  emailProfesor;
   mensajesValidacion = {
     'nombre': [
       { tipo: 'required', mensaje: 'El nombre es requerido.' },
@@ -64,24 +62,7 @@ export class MateriaRegisterFormComponent implements OnInit {
   }
 
   public onSubmit(loginData){
-    if(this.hayProfesor){
-      let materia: IMateria = {
-        nombre: loginData.nombre,
-        cuatrimestre: loginData.cuatrimestre,
-        cupo: loginData.cupo,
-        year: loginData.year,
-        profesor: this.emailProfesor
-      }
-      this.emitData.emit(materia);
-    } else {
-      this.hayProfesor = false;
-      this.mensajeProfesor = "¡Atención! Tenes que seleccionar un profesor de la lista";
-    }
+      this.emitData.emit(loginData);
   }
 
-  public agregarProfesor(value){
-    this.hayProfesor = true;
-    this.mensajeProfesor = "Profesor seleccionado! Ya podes registrar la materia.";
-    this.emailProfesor = value;
-  }
 }

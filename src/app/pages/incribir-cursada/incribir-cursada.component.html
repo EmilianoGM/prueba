@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <td>Nombre</td>
+    <td>Cuatrimestre</td>
+    <td>Cupo</td>
+    <td>Año</td>
+    <td>Profesor</td>
+    <td>ACCION</td>
+  </tr>
+  <tbody *ngFor="let materia of listaMostrar">
+    <tr>
+      <td>{{materia.nombre}}</td>
+      <td>{{materia.cuatrimestre}}</td>
+      <td>{{materia.cupo}}</td>
+      <td>{{materia.year}}</td>
+      <td>{{materia.profesor}}</td>
+      <td>
+        <button (click)="sumarAlumnoAMateria(materia)">Inscribirse a la materia</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
